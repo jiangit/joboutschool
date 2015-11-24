@@ -15,7 +15,8 @@ return isMobile;
 
 // show whether the device is mobile
 $(document).ready(function(){
-	$("h1>span").html(isMobile === true ? "" : "not ");
+	var textFill =  isMobile === true ? "" : "not ";
+	$("h1>span").html(textFill);
 })
 </script>
 </head>
