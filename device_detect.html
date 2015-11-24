@@ -6,14 +6,12 @@
 	<script type="text/javascript">
 	var isMobile = false; //initiate as false
 	isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
-	return isMobile;
-}
 
 // show whether the device is mobile
 $(document).ready(function(){
 	var textFill =  isMobile === true ? "" : "not ";
 	$("h1>span").html(textFill);
-})
+});
 </script>
 </head>
 <body>
