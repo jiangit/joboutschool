@@ -5,7 +5,19 @@
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
 	var isMobile = false; //initiate as false
+	var constructPage = "http://www.google.com";
+
 	isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+
+	// redirecIfNeeded(); 	// Un-comment this to enable redirect
+	/**
+	* if the current device is a mobile device, redirection to page...
+	**/
+	function redirecIfNeeded(){
+		if(isMobile){
+			window.location = constructPage
+		}
+	}
 
 // show whether the device is mobile
 $(document).ready(function(){
