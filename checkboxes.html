@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>checkboxes - exemple</title>
+	<style type="text/css"></style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		/**
+		* composition: checkboxId => buttonClass
+		* MAKE SURE THE IDs OF THE CHECKBOXES HAVE THE VALUE OF THE POWER OF ITS ORDER
+		* FOR EXAMPLE: the first has id of "1x1=1", the second has id of "2x2=4"
+		*/
+		var arrayPair = {1:"class1", 4:"class2", 9:"class3", 16:"class4", 5:"class5", 10:"class6"};
+		$(document).ready(function(){
+			$('.chbx').change(function(){
+				var chbxIdValTotal = getChexboxesTotalId();
+				hideShowBtns(chbxIdValTotal);
+			});
+
+			function getChexboxesTotalId(){
+				var chbxId = 0;
+				$('.chbx').each(function(){
+					if($(this).is(":checked")) {
+						chbxId += parseInt($(this).attr("id"));
+					}
+				})
+				return chbxId;
+			}
+
+			function hideShowBtns(chbxIdValTotal){
+				$("button.btn").addClass("hidden");
+				var btnClass = getBtnClass(chbxIdValTotal);
+				$("button.btn."+btnClass).fadeIn("fast").removeClass("hidden");
+
+			}
+
+			function getBtnClass(chbxIdValTotal){
+				var btnClass = arrayPair[chbxIdValTotal];
+				return btnClass;
+			}
+		});
+		</script>
+	</head>
+	<body>
+		<!-- checkbox elements -->
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="cours1" value="nomDeCours1" class="chbx" id="1"> Cours 1<br>
+			</label>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="cours2" value="nomDeCours2" class="chbx" id="4"> Cours 2<br>
+			</label>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="cours3" value="nomDeCours3" class="chbx" id="9"> Cours 3<br>
+			</label>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="cours4" value="nomDeCours4" class="chbx" id="16"> Cours 4<br>
+			</label>
+		</div>
+
+		<!-- hide/show elements -->
+		<button class="class1 btn btn-primary hidden" >Cours 1 </button>
+		<button class="class2 btn btn-primary hidden" >Cours 2 </button>
+		<button class="class3 btn btn-primary hidden" >Cours 3 </button>
+		<button class="class4 btn btn-primary hidden" >Cours 4 </button>
+		<button class="class5 btn btn-primary hidden" >Cours 1+2 </button>
+		<button class="class6 btn btn-primary hidden" >Cours 1+3 </button>
+	</body>
+	</html>
