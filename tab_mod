@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>checkboxes - exemple</title>
+	<style type="text/css"></style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var tab1Class = ".a";
+		$(tab1Class).click(function(){
+			var current = $(this);
+			$(tab1Class).each(function(){
+				var isActive = $(this).parent('li').hasClass("active");
+				if(isActive){
+					$(this).parent("li").removeClass("active");
+				}
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<div>
+
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<div>
+				<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="a">Home</a></li>
+			</div>
+			<div>
+				<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="a">Profile</a></li>
+			</div>
+			<div>
+				<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="a">Messages</a></li>
+			</div>
+			<div>
+				<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" class="a">Settings</a></li>
+			</div>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">...</div>
+			<div role="tabpanel" class="tab-pane" id="profile">ttt</div>
+			<div role="tabpanel" class="tab-pane" id="messages">ddd</div>
+			<div role="tabpanel" class="tab-pane" id="settings">bbb</div>
+		</div>
+
+	</div>
+</body>
+</html>
