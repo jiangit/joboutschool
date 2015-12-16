@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title>checkboxes - exemple</title>
+	<style type="text/css"></style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.chbx').change(function(){
+				var chbxParentId = getChexboxesParentId();
+				hideShowBtns(chbxParentId);
+			});
+
+			function getChexboxesParentId(){
+				var chbxId = 0;
+				$('.chbx').each(function(){
+					if($(this).is(":checked")) {					
+						chbxId = $(this).parents("div").attr("id");
+					}
+				})
+				console.log(chbxId);
+				return chbxId;
+			}
+
+			function hideShowBtns(chbxParentId){
+				$("button.btn").addClass("hidden");
+				var btnClass = getBtnClass(chbxParentId);
+				$("button.btn."+btnClass).fadeIn("fast").removeClass("hidden");
+
+			}
+
+			function getBtnClass(chbxParentId){
+				var btnClass = chbxParentId;
+				return btnClass;
+			}
+		});
+		</script>
+	</head>
+	<body>
+		<!-- checkbox elements -->
+		<div class="checkbox" id="class1">
+			<label>
+				<input type="checkbox" name="cours1" value="nomDeCours1" class="chbx" id="1"> Cours 1<br>
+			</label>
+		</div>
+		<div class="checkbox" id="class2">
+			<label>
+				<input type="checkbox" name="cours1" value="nomDeCours2" class="chbx" id="1"> Cours 2<br>
+			</label>
+		</div>
+		<div class="checkbox" id="class3">
+			<label>
+				<input type="checkbox" name="cours1" value="nomDeCours3" class="chbx" id="1"> Cours 3<br>
+			</label>
+		</div>
+		<div class="checkbox" id="class4">
+			<label>
+				<input type="checkbox" name="cours1" value="nomDeCours4" class="chbx" id="1"> Cours 4<br>
+			</label>
+		</div>
+		
+
+		<!-- hide/show elements -->
+		<button class="class1 btn btn-primary hidden" >Cours 1 </button>
+		<button class="class2 btn btn-primary hidden" >Cours 2 </button>
+		<button class="class3 btn btn-primary hidden" >Cours 3 </button>
+		<button class="class4 btn btn-primary hidden" >Cours 4 </button>
+	</body>
+	</html>
